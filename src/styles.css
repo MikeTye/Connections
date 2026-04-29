@@ -1,0 +1,42 @@
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #101828;
+  --muted: #667085;
+  --line: #e4e7ec;
+  --accent: #1d2939;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, -apple-system, sans-serif; color: var(--text); background: var(--bg); }
+.app-shell { padding: 24px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; }
+.topbar h1 { font-size: 20px; margin: 0; }
+.topbar select { margin-left: 8px; padding: 6px 8px; border-radius: 8px; }
+.workspace { display:grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
+.profile-view, .profile-editor { background: var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px; }
+.identity-header { display:flex; justify-content:space-between; gap:16px; }
+.eyebrow { text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-size: 11px; margin:0 0 8px; }
+h1,h2,h3 { margin:0 0 8px; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+.intent-row { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0; }
+.chip { border:1px solid var(--line); padding:4px 10px; border-radius:999px; font-size:12px; }
+.chip--intent { background:#eef2ff; }
+.chip--private { background:#fef3f2; color:#912018; border-color:#fecdca; }
+.about-card { border:1px solid var(--line); border-radius:12px; padding:14px; }
+.section-grid { margin-top:16px; display:grid; gap:12px; }
+.section-card { border:1px solid var(--line); border-radius:12px; padding:14px; }
+.section-card--locked { background:#fcfcfd; }
+.section-head { display:flex; align-items:center; justify-content:space-between; }
+.editor-list { display:grid; gap:12px; margin:16px 0; }
+.editor-section { border:1px solid var(--line); border-radius:12px; padding:12px; }
+.editor-row { display:flex; justify-content:space-between; align-items:center; }
+.visibility-control { display:flex; gap:8px; flex-wrap:wrap; }
+.visibility-pill { border:1px solid var(--line); background:#fff; border-radius:999px; padding:6px 10px; font-size:12px; cursor:pointer; }
+.visibility-pill.is-active { border-color: var(--accent); background:#eef4ff; }
+.primary-btn { width:100%; border:none; background:var(--accent); color:#fff; padding:10px 12px; border-radius:10px; cursor:pointer; }
+.share-module { border-top:1px solid var(--line); padding-top:14px; }
+@media (max-width: 960px) {
+  .workspace { grid-template-columns: 1fr; }
+}
