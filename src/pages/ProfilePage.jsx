@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AppShell, Topbar, Card, TagCluster, Avatar, EmptyState } from '../components/primitives';
 
 const PROFILE = {
   name: 'Aisha Razali',
@@ -23,13 +24,6 @@ const PROFILE = {
   },
   stats: { connections: 12, responseTime: '~4 hrs' },
 };
-
-// ── Sub-components ────────────────────────────────────────────────────────────
-function Avatar({ initials, size = 'md' }) {
-  return (
-    <div className={`avatar avatar--${size}`}>{initials}</div>
-  );
-}
 
 function PromptStep({ prompts, onSubmit }) {
   const [answers, setAnswers] = useState(prompts.map(() => ''));
@@ -72,19 +66,16 @@ export default function ProfilePage() {
   const p = PROFILE;
 
   return (
-    <div className="page">
+    <AppShell>
 
       {/* Topbar */}
-      <div className="topbar">
-        <div className="nav__brand">
+      <Topbar left={<div className="nav__brand">
           <div className="nav__dot" style={{ width: 7, height: 7 }} />
           <span className="nav__wordmark" style={{ fontSize: 'var(--text-md)' }}>SIGNAL</span>
-        </div>
-        <span className="topbar__timer">
+        </div>} right={<span className="topbar__timer">
           <span className="topbar__timer-dot" />
           Link expires in 2h 41m
-        </span>
-      </div>
+        </span>} />
 
       {/* Main content */}
       <div className="container container--profile" style={{ padding: 'var(--space-10) var(--space-6) var(--space-20)' }}>
@@ -108,7 +99,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Partial profile — always shown */}
-        <div className="card card--warm" style={{ padding: 'var(--space-6)', marginBottom: 'var(--space-6)', borderRadius: 'var(--radius-2xl)' }}>
+        <Card tone="warm" className="card--profile-section" >
 
           <h3 className="card__section-label card__section-label--accent" style={{ marginBottom: 'var(--space-3)' }}>
             A little about
@@ -118,17 +109,13 @@ export default function ProfilePage() {
           <h3 className="card__section-label card__section-label--muted" style={{ marginBottom: 'var(--space-2) + 2px', marginBottom: 10 }}>
             Interests
           </h3>
-          <div className="tag-cluster" style={{ marginBottom: 'var(--space-5)' }}>
-            {p.interests.map(t => <span key={t} className="tag tag--sage">{t}</span>)}
-          </div>
+          <TagCluster items={p.interests} tone="sage" className="cluster--mb-lg" />
 
           <h3 className="card__section-label card__section-label--muted" style={{ marginBottom: 10 }}>
             Values
           </h3>
-          <div className="tag-cluster">
-            {p.values.map(t => <span key={t} className="tag tag--warm">{t}</span>)}
-          </div>
-        </div>
+          <TagCluster items={p.values} tone="warm" />
+        </Card>
 
         {/* Endorsements */}
         <div className="card--lavender" style={{ marginBottom: 'var(--space-8)' }}>
@@ -198,22 +185,19 @@ export default function ProfilePage() {
         )}
 
         {step === 'submitted' && (
-          <div className="card--confirm">
-            <div style={{ fontSize: 36, marginBottom: 'var(--space-4)', color: 'var(--color-sage)' }}>✦</div>
-            <h2 className="display display--h4" style={{ color: 'var(--color-confirm-dark)', marginBottom: 'var(--space-2) + 2px', marginBottom: 10 }}>
-              Request sent.
-            </h2>
-            <p style={{ fontSize: 'var(--text-base)', color: 'var(--color-confirm-text)', lineHeight: 'var(--leading-relaxed)', marginBottom: 'var(--space-5)' }}>
-              {p.name.split(' ')[0]} typically responds in {p.stats.responseTime}. If she accepts, you'll get her contact details and her full profile.
-            </p>
+          <Card tone="confirm">
+            <EmptyState
+              title="Request sent."
+              description={`${p.name.split(' ')[0]} typically responds in ${p.stats.responseTime}. If she accepts, you'll get her contact details and her full profile.`}
+            />
             <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-confirm-quiet)', margin: 0 }}>
               No app to install. We'll reach you by email.
             </p>
-          </div>
+          </Card>
         )}
 
       </div>
 
-    </div>
+    </AppShell>
   );
 }

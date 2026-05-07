@@ -932,3 +932,71 @@
     padding: var(--space-4) var(--space-6);
   }
 }
+/* Additive primitives + variants for shared components */
+.pill { display: inline-flex; align-items: center; }
+.pill--hero { margin-bottom: var(--space-8); }
+
+.section-header { margin-bottom: var(--space-6); }
+.section-header__subtitle { margin-top: var(--space-3); }
+
+.card--profile-section {
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  border-radius: var(--radius-2xl);
+}
+
+.cluster--mb-lg { margin-bottom: var(--space-5); }
+
+.empty-state__icon {
+  font-size: 36px;
+  margin-bottom: var(--space-4);
+  color: var(--color-sage);
+}
+.empty-state__title {
+  color: var(--color-confirm-dark);
+  margin-bottom: 10px;
+}
+.empty-state__description {
+  font-size: var(--text-base);
+  color: var(--color-confirm-text);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-5);
+}
+
+.list-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--color-accent-mid);
+  background: var(--color-canvas-warm);
+}
+.list-row + .list-row { margin-top: var(--space-3); }
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  padding: 6px 12px;
+}
+.status-chip--active { background: var(--color-sage-light); color: var(--color-sage); }
+.status-chip--pending { background: var(--color-lavender-light); color: var(--color-lavender); }
+.status-chip--quiet { background: var(--color-canvas-mid); color: var(--color-ink-400); }
+
+.step-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.step-indicator__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-ink-200);
+}
+.step-indicator__dot--active { background: var(--color-accent); }
+.step-indicator__dot--complete { background: var(--color-sage); }
