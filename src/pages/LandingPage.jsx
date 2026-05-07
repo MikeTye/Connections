@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { AppShell, Pill, Avatar } from '../components/primitives';
 
 const STATS = [
     { value: '6 in 10', label: 'people say they struggle to make meaningful new connections after 30' },
@@ -164,11 +165,9 @@ function SignupForm() {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function LandingPage() {
     return (
-        <div className="page">
+        <AppShell blobs>
 
             {/* Ambient blobs */}
-            <div className="page-blob page-blob--warm" aria-hidden="true" />
-            <div className="page-blob page-blob--sage" aria-hidden="true" />
 
             {/* Nav */}
             <nav className="nav content-layer">
@@ -184,10 +183,7 @@ export default function LandingPage() {
                 <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 'var(--space-8)', alignItems: 'start' }}>
 
                     <div>
-                        <div className="pill--live" style={{ marginBottom: 'var(--space-8)', display: 'inline-flex' }}>
-                            <div className="pill--live__dot" />
-                            <span className="pill--live__text">Now open in Kuala Lumpur</span>
-                        </div>
+                        <Pill variant="live" dot className="pill--hero">Now open in Kuala Lumpur</Pill>
 
                         <h1 className="display display--hero" style={{ marginBottom: 'var(--space-7)' }}>
                             Meet people<br />
@@ -208,7 +204,7 @@ export default function LandingPage() {
                     <div style={{ position: 'relative', paddingTop: 8 }}>
                         <div className="teaser-card">
                             <div className="teaser-card__header">
-                                <div className="avatar avatar--md">A</div>
+                                <Avatar initials="A" />
                                 <div>
                                     <div className="teaser-card__name">Aisha</div>
                                     <div className="teaser-card__sub">Shared 3 interests with you</div>
@@ -357,6 +353,6 @@ export default function LandingPage() {
           .teaser-card { display: none; }
         }
       `}</style>
-        </div>
+        </AppShell>
     );
 }
