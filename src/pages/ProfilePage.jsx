@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import DemoNav from '../components/DemoNav';
 import { AppShell, Topbar, Card, TagCluster, Avatar, EmptyState } from '../components/primitives';
 
 const PROFILE = {
@@ -67,6 +68,7 @@ export default function ProfilePage() {
 
   return (
     <AppShell>
+      <DemoNav />
 
       {/* Topbar */}
       <Topbar left={<div className="nav__brand">
