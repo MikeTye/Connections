@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import DemoNav from '../components/DemoNav';
 import { AppShell, Pill, Avatar } from '../components/primitives';
 
 const STATS = [
@@ -166,6 +167,7 @@ function SignupForm() {
 export default function LandingPage() {
     return (
         <AppShell blobs>
+            <DemoNav />
 
             {/* Ambient blobs */}
 
