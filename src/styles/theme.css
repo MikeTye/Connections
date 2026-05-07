@@ -1,0 +1,155 @@
+/* ─────────────────────────────────────────────
+   Signal — Design Tokens
+   All values live here. Nothing else hardcodes
+   a colour, font, or radius.
+───────────────────────────────────────────── */
+
+:root {
+  /* ── Colour: Base ─────────────────────────── */
+  --color-canvas:        #FFFAF5;   /* page background */
+  --color-canvas-warm:   #FFF7F0;   /* slightly warmer surface */
+  --color-canvas-mid:    #F5EDE3;   /* section backgrounds, callouts */
+
+  /* ── Colour: Ink ──────────────────────────── */
+  --color-ink-900:       #2C1F0E;   /* primary text, headings */
+  --color-ink-700:       #5A4535;   /* body text on warm surfaces */
+  --color-ink-500:       #7A6E65;   /* secondary body text */
+  --color-ink-400:       #9A8E85;   /* placeholders, meta text */
+  --color-ink-300:       #B0A89F;   /* labels, quiet text */
+  --color-ink-200:       #D0C4BC;   /* step numbers, ornamental */
+  --color-ink-100:       #E8E0D5;   /* hairlines, dividers */
+
+  /* ── Colour: Accent — Terracotta ─────────────*/
+  --color-accent:        #C05A20;   /* primary CTA, links, active states */
+  --color-accent-light:  #F5EDE3;   /* accent tint backgrounds */
+  --color-accent-mid:    #F0E4D4;   /* accent borders */
+  --color-accent-dark:   #8A3E12;   /* hover state */
+
+  /* ── Colour: Sage ─────────────────────────── */
+  --color-sage:          #4A8C2A;   /* friendship / interest tags */
+  --color-sage-light:    #EAF3DE;   /* tag background */
+  --color-sage-mid:      #D0EBC4;   /* tag border */
+
+  /* ── Colour: Lavender ─────────────────────── */
+  --color-lavender:      #7060B0;   /* endorsements */
+  --color-lavender-light:#F5F0FF;   /* endorsement card bg */
+  --color-lavender-mid:  #E8E0F4;   /* endorsement card border */
+  --color-lavender-text: #3A2C68;   /* endorsement body text */
+  --color-lavender-bar:  #C4B8E8;   /* blockquote bar */
+
+  /* ── Colour: Blush ────────────────────────── */
+  --color-blush-light:   #FEF0E8;   /* dating capsule bg */
+  --color-blush-mid:     #FAD8C4;   /* dating capsule border */
+
+  /* ── Colour: Sky ──────────────────────────── */
+  --color-sky-light:     #E8F0FE;   /* interest capsule bg */
+  --color-sky-accent:    #3A60B8;   /* interest capsule label */
+
+  /* ── Colour: Ink (dark surface) ───────────── */
+  --color-surface-dark:  #2C1F0E;   /* dark CTA panels */
+  --color-on-dark:       #FFFAF5;   /* text on dark surfaces */
+  --color-on-dark-muted: #A09080;   /* secondary text on dark */
+  --color-on-dark-border:#3A2E24;   /* borders on dark */
+
+  /* ── Colour: Confirmation ────────────────── */
+  --color-confirm-light: #EAF3DE;
+  --color-confirm-mid:   #C0E0A4;
+  --color-confirm-dark:  #2A5018;
+  --color-confirm-text:  #4A7030;
+  --color-confirm-quiet: #7A9A60;
+
+  /* ── Avatar gradient ─────────────────────── */
+  --color-avatar-from:   #F5C4A4;
+  --color-avatar-to:     #E89468;
+  --color-avatar-text:   #6A2800;
+
+  /* ── Typography ──────────────────────────── */
+  --font-display:  'Fraunces', Georgia, serif;
+  --font-body:     'DM Sans', system-ui, sans-serif;
+
+  --text-xs:    11px;
+  --text-sm:    12px;
+  --text-base:  14px;
+  --text-md:    15px;
+  --text-lg:    17px;
+  --text-xl:    18px;
+  --text-2xl:   22px;
+  --text-3xl:   26px;
+  --text-hero:  clamp(48px, 6vw, 80px);
+  --text-h2:    clamp(24px, 3.5vw, 42px);
+  --text-h2-sm: clamp(24px, 3vw, 38px);
+  --text-stat:  52px;
+  --text-logo:  20px;
+
+  --leading-tight:  1.08;
+  --leading-snug:   1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed:1.7;
+  --leading-loose:  1.75;
+
+  --tracking-label: 0.08em;   /* section labels */
+  --tracking-caps:  0.12em;   /* uppercase caps */
+  --tracking-wide:  0.06em;   /* logo */
+
+  --weight-normal:  400;
+  --weight-medium:  500;
+  --weight-light:   300;
+
+  /* ── Spacing ──────────────────────────────── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-7:   28px;
+  --space-8:   32px;
+  --space-9:   36px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-14:  56px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-28:  112px;
+  --space-32:  128px;
+
+  /* ── Radii ────────────────────────────────── */
+  --radius-sm:   8px;
+  --radius-md:   10px;
+  --radius-lg:   12px;
+  --radius-xl:   14px;
+  --radius-2xl:  16px;
+  --radius-3xl:  20px;
+  --radius-4xl:  24px;
+  --radius-pill: 99px;
+  --radius-full: 50%;
+
+  /* ── Borders ──────────────────────────────── */
+  --border-hairline: 1px solid var(--color-ink-100);
+  --border-default:  1.5px solid var(--color-ink-100);
+  --border-accent:   1.5px solid var(--color-accent-mid);
+  --border-warm:     1.5px solid var(--color-accent-mid);
+  --border-sage:     1.5px solid var(--color-sage-mid);
+  --border-lavender: 1.5px solid var(--color-lavender-mid);
+
+  /* ── Shadows ──────────────────────────────── */
+  --shadow-card:   0 8px 40px rgba(44, 31, 14, 0.08);
+  --shadow-card-sm:0 4px 20px rgba(44, 31, 14, 0.06);
+  --shadow-cta:    0 4px 20px rgba(192, 90, 32, 0.20);
+  --shadow-cta-hover: 0 6px 28px rgba(192, 90, 32, 0.30);
+
+  /* ── Transitions ──────────────────────────── */
+  --transition-fast:   0.15s ease;
+  --transition-base:   0.20s ease;
+  --transition-slow:   0.35s ease;
+  --transition-reveal: 0.70s ease;
+
+  /* ── Layout ───────────────────────────────── */
+  --max-w-content: 1100px;
+  --max-w-prose:   800px;
+  --max-w-form:    960px;
+  --max-w-profile: 720px;
+  --nav-px:        48px;
+  --section-px:    48px;
+}

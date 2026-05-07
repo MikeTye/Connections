@@ -1,0 +1,11 @@
+/* ─────────────────────────────────────────────
+   Signal — Style Entry Point
+   Import order matters:
+   1. Tokens  (no dependencies)
+   2. Base    (depends on tokens)
+   3. Components (depends on tokens)
+───────────────────────────────────────────── */
+
+@import './theme.css';
+@import './base.css';
+@import './component.css';
