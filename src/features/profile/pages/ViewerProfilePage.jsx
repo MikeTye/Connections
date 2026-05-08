@@ -1,7 +1,18 @@
-import { useParams } from 'react-router-dom';
-import PlaceholderPage from '../../../components/PlaceholderPage';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ProfileHeader, ProfileAbout } from '../ProfileBlocks';
 
 export default function ViewerProfilePage() {
   const { shareSlug } = useParams();
-  return <PlaceholderPage title="Viewer Profile" description={`Placeholder for viewer profile route: ${shareSlug}`} />;
+  const navigate = useNavigate();
+
+  return (
+    <main className="container" style={{ padding: '2rem 1rem' }}>
+      <ProfileHeader />
+      <ProfileAbout />
+      <p>Viewing shared profile link: {shareSlug}</p>
+      <button type="button" onClick={() => navigate(`/intro/${shareSlug}/collab-intent`)}>
+        Continue to intro
+      </button>
+    </main>
+  );
 }
