@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import DemoNav from '../components/DemoNav';
 import { AppShell, Pill, Avatar } from '../components/primitives';
+import DemoQRScanner from '../components/DemoQRScanner';
 
 const STATS = [
     { value: '6 in 10', label: 'people say they struggle to make meaningful new connections after 30' },
@@ -229,6 +230,12 @@ export default function LandingPage() {
                         </div>
                     </div>
 
+                </div>
+            </section>
+
+            <section className="content-layer" style={{ padding: '0 var(--section-px)' }}>
+                <div className="container" style={{ maxWidth: 560 }}>
+                    <DemoQRScanner />
                 </div>
             </section>
 
