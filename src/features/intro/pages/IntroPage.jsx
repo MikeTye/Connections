@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { addInboxItem } from '../../../data/mockAppState';
+import { useDemoStore } from '../../../state/DemoStore';
 
 const fields = [
   { id: 'who', label: 'Who are you?', placeholder: 'Your name + context' },
@@ -11,13 +11,14 @@ const fields = [
 export default function IntroPage() {
   const { shareSlug, intentId } = useParams();
   const navigate = useNavigate();
+  const { submitIntro } = useDemoStore();
   const [form, setForm] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const isValid = useMemo(() => fields.every((f) => (form[f.id] || '').trim()), [form]);
 
   const onSubmit = () => {
     if (!isValid) return;
-    addInboxItem({
+    submitIntro({
       id: `req-${Date.now()}`,
       from: form.who,
       intent: intentId,
