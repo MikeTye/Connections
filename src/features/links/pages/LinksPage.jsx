@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { AppShell, Card, Pill, SectionHeader } from '../../../components/primitives';
+import { useDemoStore } from '../../../state/DemoStore';
 
 const defaultDraft = {
   label: 'Conference profile',
@@ -10,20 +11,14 @@ const defaultDraft = {
 
 export default function LinksPage() {
   const [draft, setDraft] = useState(defaultDraft);
-  const [links, setLinks] = useState([
-    { id: 1, label: 'Product hunt follow-up', expiry: '24 hours', maxViews: '10', scope: 'Anyone with link', status: 'active' },
-    { id: 2, label: 'Community volunteers', expiry: 'Expired', maxViews: 'Unlimited', scope: 'Mentors only', status: 'expired' },
-    { id: 3, label: 'Angel intro packet', expiry: '3 days', maxViews: '5', scope: 'Investors only', status: 'revoked' },
-  ]);
-
+  const { state, createShareLink, revokeShareLink } = useDemoStore();
+  const links = state.createdShareLinks;
   const statusVariant = useMemo(() => ({ active: 'live', expired: 'muted', revoked: 'warm' }), []);
 
   const createLink = () => {
-    setLinks((current) => [{ id: Date.now(), ...draft, status: 'active' }, ...current]);
+    createShareLink(draft);
     setDraft(defaultDraft);
   };
-
-  const revokeLink = (id) => setLinks((current) => current.map((link) => (link.id === id ? { ...link, status: 'revoked' } : link)));
 
   return (
     <AppShell>
@@ -48,7 +43,7 @@ export default function LinksPage() {
                   <Pill variant={statusVariant[link.status]}>{link.status}</Pill>
                 </div>
                 <p className="body-sm" style={{ marginBottom: 10 }}>Expiry: {link.expiry} · Max views: {link.maxViews} · Scope: {link.scope}</p>
-                <button type="button" className="btn btn--ghost" onClick={() => revokeLink(link.id)} disabled={link.status === 'revoked'}>Revoke link</button>
+                <button type="button" className="btn btn--ghost" onClick={() => revokeShareLink(link.id)} disabled={link.status === 'revoked'}>Revoke link</button>
               </Card>
             ))}
           </div>

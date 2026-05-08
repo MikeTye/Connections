@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDemoStore } from '../../../state/DemoStore';
 
 const sections = [
   { id: 'identity', title: 'Identity', fields: ['Name', 'Location', 'Current role'] },
@@ -10,6 +11,7 @@ const sections = [
 export default function OnboardingPage() {
   const navigate = useNavigate();
   const [draft, setDraft] = useState({});
+  const { completeOnboarding } = useDemoStore();
 
   return (
     <main className="container" style={{ maxWidth: 760, padding: '2rem 1rem' }}>
@@ -33,7 +35,7 @@ export default function OnboardingPage() {
           })}
         </section>
       ))}
-      <button type="button" onClick={() => navigate('/profile/me')}>Save & Continue</button>
+      <button type="button" onClick={() => { completeOnboarding(); navigate('/profile/me'); }}>Save & Continue</button>
     </main>
   );
 }

@@ -1,19 +1,15 @@
 import { AppShell, Card, SectionHeader } from '../../../components/primitives';
-
-const funnel = [
-  { label: 'Open', value: 380 },
-  { label: 'View', value: 265 },
-  { label: 'Intro', value: 92 },
-  { label: 'Decision', value: 34 },
-];
-
-const intentRows = [
-  { intent: 'Mentorship', opens: 102, intros: 37, decisions: 15 },
-  { intent: 'Friendship', opens: 156, intros: 31, decisions: 11 },
-  { intent: 'Dating', opens: 122, intros: 24, decisions: 8 },
-];
+import { useDemoStore } from '../../../state/DemoStore';
 
 export default function AnalyticsPage() {
+  const { state } = useDemoStore();
+  const funnel = [
+    { label: 'Open', value: state.analytics.open },
+    { label: 'View', value: state.analytics.view },
+    { label: 'Intro', value: state.analytics.intro },
+    { label: 'Decision', value: state.analytics.decision },
+  ];
+
   return (
     <AppShell>
       <section className="section section--sm">
@@ -29,17 +25,14 @@ export default function AnalyticsPage() {
           </div>
 
           <Card tone="tinted" style={{ padding: 16 }}>
-            <h3 className="display display--h4">Intent performance</h3>
+            <h3 className="display display--h4">Decision outcomes</h3>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
-                <tr><th align="left">Intent</th><th align="right">Open</th><th align="right">Intro</th><th align="right">Decision</th></tr>
+                <tr><th align="left">Status</th><th align="right">Count</th></tr>
               </thead>
               <tbody>
-                {intentRows.map((row) => (
-                  <tr key={row.intent}>
-                    <td>{row.intent}</td><td align="right">{row.opens}</td><td align="right">{row.intros}</td><td align="right">{row.decisions}</td>
-                  </tr>
-                ))}
+                <tr><td>Accepted</td><td align="right">{state.analytics.accepted}</td></tr>
+                <tr><td>Declined</td><td align="right">{state.analytics.declined}</td></tr>
               </tbody>
             </table>
           </Card>
