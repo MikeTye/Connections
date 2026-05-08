@@ -15,6 +15,11 @@ import DiscoverPage from './features/discover/pages/DiscoverPage';
 import SafetyPage from './features/safety/pages/SafetyPage';
 import AnalyticsPage from './features/analytics/pages/AnalyticsPage';
 
+function MockAuthRoute({ children }) {
+  const isMockAuthenticated = localStorage.getItem('mock-auth') === 'true';
+  return isMockAuthenticated ? children : <Navigate to="/signin" replace />;
+}
+
 function DemoFallbackRedirect() {
   const { pathname } = useLocation();
   if (pathname.startsWith('/profile')) {
@@ -41,7 +46,7 @@ export default function App() {
 
         <Route path="/inbox" element={<InboxPage />} />
         <Route path="/links" element={<LinksPage />} />
-        <Route path="/discover" element={<DiscoverPage />} />
+        <Route path="/discover" element={<MockAuthRoute><DiscoverPage /></MockAuthRoute>} />
         <Route path="/safety" element={<SafetyPage />} />
         <Route path="/analytics" element={<AnalyticsPage />} />
 
